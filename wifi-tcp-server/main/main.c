@@ -16,8 +16,8 @@
 #include "lwip/dns.h"
 
 #define PORT 8080
-#define WIFI_SSID "Xiaomi_4BB2"
-#define WIFI_PASS "ayTFvhyk"
+#define WIFI_SSID "***********"
+#define WIFI_PASS "***********"
 #define STATIC_IP "192.168.31.100"
 #define GATEWAY_IP "192.168.31.1"
 #define SUBNET_MASK "255.255.0.0"

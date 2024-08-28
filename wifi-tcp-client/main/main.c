@@ -16,8 +16,8 @@
 
 #define HOST_IP_ADDR "192.168.31.100"
 #define PORT 8080
-#define WIFI_SSID "Xiaomi_4BB2"
-#define WIFI_PASS "ayTFvhyk"
+#define WIFI_SSID "***********"
+#define WIFI_PASS "***********"
 
 static const char *TAG = "tcp_client";
 
