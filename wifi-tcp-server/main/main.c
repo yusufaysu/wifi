@@ -16,11 +16,11 @@
 #include "lwip/dns.h"
 
 #define PORT 8080
-#define WIFI_SSID "OFIS_WIFI_SSID"
-#define WIFI_PASS "OFIS_WIFI_PASSWORD"
-#define STATIC_IP "192.168.1.100"
-#define GATEWAY_IP "192.168.1.1"
-#define SUBNET_MASK "255.255.255.0"
+#define WIFI_SSID "Xiaomi_4BB2"
+#define WIFI_PASS "ayTFvhyk"
+#define STATIC_IP "192.168.31.100"
+#define GATEWAY_IP "192.168.31.1"
+#define SUBNET_MASK "255.255.0.0"
 #define DNS_IP "8.8.8.8"
 
 static const char *TAG = "tcp_server";
@@ -87,6 +87,13 @@ static void tcp_server_task(void *pvParameters) {
         } else {
             rx_buffer[len] = 0;  // gelen veriyi stringe cevirdip ve sonuna null terminate 
             ESP_LOGI(TAG, "Received %d bytes: %s", len, rx_buffer);
+
+            int err = send(sock, "Hello Client", strlen("Hello Cliient"), 0);
+            ESP_LOGI(TAG, "Sent %d bytes: %s", strlen("Hello Client"), "Hello Client");
+            if (err < 0) {
+                ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
+                break;
+            }
         }
 
         close(sock);
@@ -123,7 +130,7 @@ void wifi_init_sta(void) {
     esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config);
     esp_wifi_start();
 
-    esp_wifi_connect();
+    ESP_ERROR_CHECK(esp_wifi_connect());
 }
 
 void app_main(void) {
